@@ -1,24 +1,28 @@
 # Comment
 complete_checkout () {
 	if [[ $comp_git_branches =~ ${COMP_WORDS[COMP_CWORD-1]} ]]; then
-		local target_branch=${COMP_WORDS[COMP_CWORD-1]}
-		if [[ $cur =~ .*/.* ]]; then
-			path="${cur%/*}/"
-	 		local dirs=$(git ls-tree -d --name-only $target_branch $path | sed s/\$/\\//)
-			local git_ls=$(git ls-tree --name-only $target_branch $path)
-		else
-	 		local dirs=$(git ls-tree -d --name-only $target_branch | sed s/\$/\\//)
-			local git_ls=$(git ls-tree --name-only $target_branch)
-		fi
-		local comp_list=$dirs
-		for item in $git_ls
-		do
-			if [[ ! $dirs =~ "$item/" ]]; then
-				comp_list="$comp_list $item"
+		if [[ $BASH_VERSION == 4* ]]; then
+			local target_branch=${COMP_WORDS[COMP_CWORD-1]}
+			if [[ $cur =~ .*/.* ]]; then
+				path="${cur%/*}/"
+	 			local dirs=$(git ls-tree -d --name-only $target_branch $path | sed s/\$/\\//)
+				local git_ls=$(git ls-tree --name-only $target_branch $path)
+			else
+		 		local dirs=$(git ls-tree -d --name-only $target_branch | sed s/\$/\\//)
+				local git_ls=$(git ls-tree --name-only $target_branch)
 			fi
-		done
-		COMPREPLY=( $(compgen -W "${comp_list}" -- $cur))
-		[[ $COMPREPLY = */ ]] && compopt -o nospace
+			local comp_list=$dirs
+			for item in $git_ls
+			do
+				if [[ ! $dirs =~ "$item/" ]]; then
+					comp_list="$comp_list $item"
+				fi
+			done
+			COMPREPLY=( $(compgen -W "${comp_list}" -- $cur))
+			[[ $COMPREPLY = */ ]] && compopt -o nospace
+		else
+	                COMPREPLY=( $(compgen -f ${COMP_WORDS[${COMP_CWORD}]} ))
+		fi
 	else
 		COMPREPLY=( $(compgen -W "${comp_git_branches}" -- $cur))
 	fi
