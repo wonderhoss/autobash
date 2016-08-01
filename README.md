@@ -1,7 +1,7 @@
 # autobash
 A set of autocomplete functions for bash
 
-# build status
+## build status
 [![Build Status](http://aron.thepisymbol.info:8080/buildStatus/icon?job=autobash)](http://aron.thepisymbol.info:8080/job/autobash/)
 
 # requirements
