@@ -2,7 +2,7 @@
 A set of autocomplete functions for bash
 
 # requirements
-Some features rely on bash 4 only functions.
+Some features rely on bash version 4 functions not available earlier.
 
 # usage
 Clone repo to ~/.bash/autobash/ and add to .bash_profile:
