@@ -14,6 +14,6 @@ Some features rely on bash version 4 functions not available earlier.
 Clone repo to ~/.bash/autobash/ and add to .bash_profile:
 
 ```
-source ~/.bash/autobash/autocomplete_gitbranch.sh
-complete -o filenames -o bashdefault -F _complete_git_branches git
+export AUTOBASH=~/.bash/autobash
+source "${AUTOBASH}/main.sh"
 ```
