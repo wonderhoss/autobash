@@ -77,3 +77,4 @@ _complete_git_branches ()
   fi
   return 0
 }
+
