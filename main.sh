@@ -1,6 +1,6 @@
 # Entrypoint script. Source from .bash_profile or similar
 
-if [[ "$0" == "$BASH_SOURCE" ]]; then
+if [[ "$0" == "${BASH_SOURCE[0]}" ]]; then
   echo "Error: This script needs to be sourced instead of executed."
   exit 1
 fi
