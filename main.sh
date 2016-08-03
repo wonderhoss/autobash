@@ -1,5 +1,15 @@
 # Entrypoint script. Source from .bash_profile or similar
 
+if [[ "$0" == "$BASH_SOURCE" ]]; then
+  echo "Error: This script needs to be sourced instead of executed."
+  exit 1
+fi
+
+if [ -z "${AUTOBASH}" ]; then
+  echo "Error: Please set \$AUTOBASH to point to the autobash directory before sourcing this file."
+  return 1
+fi
+
 # shellcheck source=./git/autocomplete_gitbranch.sh
 source "${AUTOBASH}/git/autocomplete_gitbranch.sh"
 
