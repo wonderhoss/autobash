@@ -46,9 +46,9 @@ complete_rebase () {
 complete_push () {
   remotes=$(git remote)
   if [[ $remotes =~ ${COMP_WORDS[COMP_CWORD-1]} ]]; then
-    COMPREPLY=( $(compgen -W "${comp_git_branches}" -- $cur))
+    COMPREPLY=( $(compgen -W "${comp_git_branches}" -- "$cur"))
   else
-    COMPREPLY=( $(compgen -W "${comp_git_branches} ${remotes}" -- $cur))    
+    COMPREPLY=( $(compgen -W "${comp_git_branches} ${remotes}" -- "$cur"))
   fi
 }
 
