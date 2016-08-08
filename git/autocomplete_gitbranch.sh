@@ -52,6 +52,13 @@ complete_push () {
   fi
 }
 
+complete_branch () {
+  if [[ "-d" == "${COMP_WORDS[COMP_CWORD-1]}" ]]; then
+    branches=$(git branch 2>/dev/null | grep -v '^*')
+    COMPREPLY=( $(compgen -W "${branches}" -- "$cur"))
+  fi
+}
+
 _complete_git_branches ()
 {
   COMPREPLY=()
@@ -63,6 +70,8 @@ _complete_git_branches ()
     complete_rebase
   elif [[ "push" == "${COMP_WORDS[1]}" ]]; then
     complete_push
+  elif [[ "branch" == "${COMP_WORDS[1]}" ]]; then
+    complete_branch
   else
     COMPREPLY=( $(compgen -f "${COMP_WORDS[${COMP_CWORD}]}" ))
   fi
