@@ -13,7 +13,11 @@ fi
 # shellcheck source=./git/autocomplete_gitbranch.sh
 source "${AUTOBASH}/git/autocomplete_gitbranch.sh"
 
+# shellcheck source=./ssh/autocomplete_ssh.sh
+source "${AUTOBASH}/ssh/autocomplete_ssh.sh"
+
 complete -o filenames -o bashdefault -F _complete_git_branches git
+complete -F _complete_ssh_hosts ssh
 
 if [[ ! $BASH_VERSION == 4* ]]; then
   echo "Notice: Some autobash functionality requires bash version 4."
