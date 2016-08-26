@@ -11,7 +11,8 @@ A set of autocomplete functions for bash
 Some features rely on bash version 4 functions not available earlier.
 
 # usage
-Clone repo to ~/.bash/autobash/ and add to .bash_profile:
+Choose either master or a release tag and clone repo to ~/.bash/autobash/.
+Then add to .bash_profile:
 
 ```bash
 export AUTOBASH=~/.bash/autobash
@@ -28,3 +29,8 @@ Currently autocompletion for git includes the following capabilities.
 ### git rebase
 * For a simple `git rebase`, autobash will offer known local branches.
 * For `git rebase -i`, autobash will offer branches and also any commit sha on the current branch.
+
+## ssh
+Currently supports completion of hostnames and IP addresses from `~/.ssh/known_hosts` and `~/.ssh/config`
+### known issue
+Completion does not currently work if `user@` is specified as part of the hostname.
