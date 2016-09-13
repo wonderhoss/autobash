@@ -53,7 +53,7 @@ complete_push () {
 }
 
 complete_branch () {
-  if [[ "-d" == "${COMP_WORDS[COMP_CWORD-1]}" ]]; then
+  if [[ "-d" == "${COMP_WORDS[COMP_CWORD-1]}" || "-D" == "${COMP_WORDS[COMP_CWORD-1]}" ]]; then
     branches=$(git branch 2>/dev/null | grep -v '^\*')
     COMPREPLY=( $(compgen -W "${branches}" -- "$cur"))
   fi
