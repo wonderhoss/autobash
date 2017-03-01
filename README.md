@@ -33,4 +33,5 @@ Currently autocompletion for git includes the following capabilities.
 ## ssh
 Currently supports completion of hostnames and IP addresses from `~/.ssh/known_hosts` and `~/.ssh/config`
 ### known issue
-Completion does not currently work if `user@` is specified as part of the hostname.
+If `user@` is specified as part of the ssh hostname, autocomplete list will show random @ character.
+This does not impair functionality (anymore).
